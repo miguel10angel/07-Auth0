@@ -1,0 +1,42 @@
+<nav class="navbar navbar-toggleable-md navbar-light bd-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="#">
+        Authapp
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbartext">
+
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]='["home"]'>Home </a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]='["precios"]'>Precios</a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" *ngIf="aut.isAuthenticated()">
+                <a class="nav-link" [routerLink]='["protegida"]'>Protegida</a>
+            </li>
+
+        </ul>
+        <span class="navbar-text">
+            <button *ngIf="!aut.isAuthenticated()"
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                (click)="login()">
+                Ingresar
+            </button>
+            <button *ngIf="aut.isAuthenticated()"
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                (click)="logout()">
+                Salir
+            </button>
+        </span>
+    </div>
+</nav>
